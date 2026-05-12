@@ -1,4 +1,7 @@
-body{
+@import "tailwindcss";
+@plugin "daisyui";
+
+/* body{
     margin: 0;
     padding-top: 70px;
 }
@@ -42,4 +45,4 @@ body{
 .btnJson:hover{
     background-color: rgb(248, 140, 9);
     transition: background-color 400ms ease;
-}
+} */

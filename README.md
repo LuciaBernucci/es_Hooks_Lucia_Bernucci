@@ -1,16 +1,38 @@
-# React + Vite
+TROVI COMPONENTI GIA PRONTI SU DAISY UI
+(GUIDA INSTALLAZIONE SU DOCUMENTAZIONE PER VITE)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+CREO DEI MODULI, IN MODO TALE CHE OGNI COMPONENTE ABBIA LA SUA PAGINA DI CSS DEDICATA, QUINDI DA COMPONENTS CREO DELLE SOTTO CARTELLE, AD EDEMPIO NAVBAR, AL CUI INTERNO CI SARANNO I FILE NAVBAR.JSX E NAVBAR.MODULE.CSS. A questo punto però navbar.module.css è un file specifico e quindi pu avendo delle classi non si vedrà lo stile globalmente. Per risolvere basterà importare sul file .jsx il modulo .css: ESEMPIO:
 
-Currently, two official plugins are available:
+import classes from './Navbar.module.css';
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+export default function Navbar(){
+    return(
+        <>
+         <nav className={classes.navbar}>
+         ...
+         ...
+         ...
+        
+        </>
+    )
+}
 
-## React Compiler
+N.B. ora qualsiasi cosa scritta su index.css non potrà sovrascrivere lo stile che ho assegnato con un modulo.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+un metodo ancora più moderno però è utilizzare le librerie frontend dedicate allo stile, in particolare tailwind, che a differenza per esempio di bootstrap fa in modo che le classi siano dinamiche/customizzabili e gestite dallo sviluppatore attraverso js
+------------------------------------------------------------------------------
+1-INSTALLAZIONE TAILWIND:
+da terminale: npm install tailwindcss @tailwindcss/vite --force
 
-## Expanding the ESLint configuration
+2-SU VITE.CONFIG.JS:
+export default defineConfig({
+ plugins: [react(),tailwindcss(),], <-----aggiungere tailwindcss(), dentro l'array
+})
+ed importarlo: import tailwindcss from '@tailwind.css/vite'
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+3- SU INDEX.CSS:
+@import "tailwind.css";
+-------------------------------------------------------------------------------
+
+ESTENSIONE UTILE SU VSCODE:
+tailwind css intellisense
